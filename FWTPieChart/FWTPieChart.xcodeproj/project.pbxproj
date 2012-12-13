@@ -1,0 +1,264 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A923ED94167A0CE500709A25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A923ED93167A0CE500709A25 /* Foundation.framework */; };
+		A923EDD1167A0D6200709A25 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A923EDD0167A0D6200709A25 /* QuartzCore.framework */; };
+		A923EDD4167A0D6A00709A25 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A923EDD3167A0D6A00709A25 /* UIKit.framework */; };
+		A923EDD6167A0D6F00709A25 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A923EDD5167A0D6F00709A25 /* CoreGraphics.framework */; };
+		A923EDD9167A0DA000709A25 /* FWTEllipseLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDD8167A0DA000709A25 /* FWTEllipseLayer.m */; };
+		A923EDDC167A0DB100709A25 /* FWTEllipseProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDDB167A0DB100709A25 /* FWTEllipseProgressView.m */; };
+		A923EDDF167A0DC100709A25 /* FWTPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDDE167A0DC100709A25 /* FWTPieChartView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A923ED8E167A0CE500709A25 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A923ED90167A0CE500709A25 /* libFWTPieChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFWTPieChart.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A923ED93167A0CE500709A25 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A923ED97167A0CE500709A25 /* FWTPieChart-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FWTPieChart-Prefix.pch"; sourceTree = "<group>"; };
+		A923EDD0167A0D6200709A25 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A923EDD3167A0D6A00709A25 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A923EDD5167A0D6F00709A25 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A923EDD7167A0DA000709A25 /* FWTEllipseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTEllipseLayer.h; sourceTree = "<group>"; };
+		A923EDD8167A0DA000709A25 /* FWTEllipseLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTEllipseLayer.m; sourceTree = "<group>"; };
+		A923EDDA167A0DB100709A25 /* FWTEllipseProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTEllipseProgressView.h; sourceTree = "<group>"; };
+		A923EDDB167A0DB100709A25 /* FWTEllipseProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTEllipseProgressView.m; sourceTree = "<group>"; };
+		A923EDDD167A0DC100709A25 /* FWTPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWTPieChartView.h; sourceTree = "<group>"; };
+		A923EDDE167A0DC100709A25 /* FWTPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWTPieChartView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A923ED8D167A0CE500709A25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A923EDD6167A0D6F00709A25 /* CoreGraphics.framework in Frameworks */,
+				A923EDD4167A0D6A00709A25 /* UIKit.framework in Frameworks */,
+				A923EDD1167A0D6200709A25 /* QuartzCore.framework in Frameworks */,
+				A923ED94167A0CE500709A25 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A923ED85167A0CE500709A25 = {
+			isa = PBXGroup;
+			children = (
+				A923ED95167A0CE500709A25 /* FWTPieChart */,
+				A923ED92167A0CE500709A25 /* Frameworks */,
+				A923ED91167A0CE500709A25 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A923ED91167A0CE500709A25 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A923ED90167A0CE500709A25 /* libFWTPieChart.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A923ED92167A0CE500709A25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A923EDD5167A0D6F00709A25 /* CoreGraphics.framework */,
+				A923EDD3167A0D6A00709A25 /* UIKit.framework */,
+				A923EDD0167A0D6200709A25 /* QuartzCore.framework */,
+				A923ED93167A0CE500709A25 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A923ED95167A0CE500709A25 /* FWTPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				A923EDD7167A0DA000709A25 /* FWTEllipseLayer.h */,
+				A923EDD8167A0DA000709A25 /* FWTEllipseLayer.m */,
+				A923EDDA167A0DB100709A25 /* FWTEllipseProgressView.h */,
+				A923EDDB167A0DB100709A25 /* FWTEllipseProgressView.m */,
+				A923EDDD167A0DC100709A25 /* FWTPieChartView.h */,
+				A923EDDE167A0DC100709A25 /* FWTPieChartView.m */,
+				A923ED96167A0CE500709A25 /* Supporting Files */,
+			);
+			path = FWTPieChart;
+			sourceTree = "<group>";
+		};
+		A923ED96167A0CE500709A25 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A923ED97167A0CE500709A25 /* FWTPieChart-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A923ED8F167A0CE500709A25 /* FWTPieChart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A923ED9E167A0CE500709A25 /* Build configuration list for PBXNativeTarget "FWTPieChart" */;
+			buildPhases = (
+				A923ED8C167A0CE500709A25 /* Sources */,
+				A923ED8D167A0CE500709A25 /* Frameworks */,
+				A923ED8E167A0CE500709A25 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FWTPieChart;
+			productName = FWTPieChart;
+			productReference = A923ED90167A0CE500709A25 /* libFWTPieChart.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A923ED87167A0CE500709A25 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Marco Meschini";
+			};
+			buildConfigurationList = A923ED8A167A0CE500709A25 /* Build configuration list for PBXProject "FWTPieChart" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A923ED85167A0CE500709A25;
+			productRefGroup = A923ED91167A0CE500709A25 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A923ED8F167A0CE500709A25 /* FWTPieChart */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A923ED8C167A0CE500709A25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A923EDD9167A0DA000709A25 /* FWTEllipseLayer.m in Sources */,
+				A923EDDC167A0DB100709A25 /* FWTEllipseProgressView.m in Sources */,
+				A923EDDF167A0DC100709A25 /* FWTPieChartView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A923ED9C167A0CE500709A25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A923ED9D167A0CE500709A25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A923ED9F167A0CE500709A25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/FWTPieChart.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FWTPieChart/FWTPieChart-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A923EDA0167A0CE500709A25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/FWTPieChart.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FWTPieChart/FWTPieChart-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A923ED8A167A0CE500709A25 /* Build configuration list for PBXProject "FWTPieChart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A923ED9C167A0CE500709A25 /* Debug */,
+				A923ED9D167A0CE500709A25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A923ED9E167A0CE500709A25 /* Build configuration list for PBXNativeTarget "FWTPieChart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A923ED9F167A0CE500709A25 /* Debug */,
+				A923EDA0167A0CE500709A25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A923ED87167A0CE500709A25 /* Project object */;
+}
