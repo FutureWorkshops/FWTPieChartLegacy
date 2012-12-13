@@ -49,18 +49,14 @@ The sample project shows how to use the FWTEllipseProgressView, FWTPieChartView 
 	// progress
     FWTEllipseProgressView *epv = [[[FWTEllipseProgressView alloc] initWithFrame:frame] autorelease];
     [self.view addSubview:epv];
-    
-    …
+    // update the progress   
     [epv setProgress:aValue animated:YES];
-	
-	…
-	…
 	
 	// pie chart
 	FWTPieChartView *pcv = [[[FWTPieChartView alloc] initWithFrame:frame] autorelease];
 	[self.view addSubview:pcv];
 	
-	…
+	// update the values
 	NSArray *values = @[@.14, @.26, @.2, @.15, @.25];
 	[pcv setValues:values animated:YES];	
 ````
