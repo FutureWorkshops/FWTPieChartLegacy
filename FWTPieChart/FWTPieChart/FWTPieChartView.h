@@ -14,6 +14,7 @@ typedef UIColor *(^FWTPieChartViewColorForSliceBlock)(FWTPieChartView *, NSInteg
 @interface FWTPieChartView : UIView
 
 @property (nonatomic, retain) NSArray *values;
+@property (nonatomic, readonly, retain) CALayer *containerLayer;
 @property (nonatomic, copy) FWTPieChartViewColorForSliceBlock colorForSliceBlock;
 @property (nonatomic, assign) CGFloat minimumAnimationDuration, maximumAnimationDuration;
 

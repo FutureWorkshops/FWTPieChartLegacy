@@ -61,7 +61,7 @@
 typedef void (^FWTPieChartViewCompletionBlock)(void);
 
 @interface FWTPieChartView ()
-@property (nonatomic, retain) CALayer *containerLayer;
+@property (nonatomic, readwrite, retain) CALayer *containerLayer;
 @property (nonatomic, assign) NSInteger animationCounter;
 @property (nonatomic, assign) BOOL restoreAnimation;
 @property (nonatomic, getter = isAnimating) BOOL animating;
