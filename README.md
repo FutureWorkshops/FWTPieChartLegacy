@@ -1,100 +1,65 @@
-#FWTAnnotationManager
+#FWTPieChart
 
-![FWTAnnotationManager screenshot](http://grab.by/ia7m)
+![FWTPieChart screenshot](http://grab.by/igoS)
 
-FWTAnnotationManager is a small set of classes that makes easy to manage custom annotations for each screen of your app. 
-
-FWTAnnotationManager extends our [FWTPopoverView](https://github.com/FutureWorkshops/FWTPopover) project and changes the methaphor from a simple popover view to a slightly more complex annotation view. As Apple does with MapKit, the FWTAnnotationManager uses FWTAnnotation objects to provide annotation related informations inside a view controller. An FWTAnnotation instance does not provide the visual representation of the annotation but typically coordinate (in conjuction with your custom blocks) the creation of an appropriate FWTAnnotationView object to handle the display.  
-
-The FWTAnnotationManager can be considered as an extension of a UIViewController instance and typically you interact with it by adding or removing annotation objects. It supports also a sequential and delayed order when displaying multiple annotations.
-
+FWTPieChart is a small set of classes that shows how to create circular progress view and pie charts. The core is the FWTEllipseLayer, a custom CALayer subclass that adds a couple of custom animatable properties and exposes few blocks as extension points.
 
 ##Requirements
 * XCode 4.4.1 or higher
 * iOS 5.0
 
 ##Features
-Each FWTAnnotationManager has a container view that holds all the annotation views and a model object that stores annotations and exposes, as a MKMapView, few public methods to retrieve views/annotations. The container view can be of two different types: default or radial. The latter one is a quite nice and advanced sample about a possible way to customize the FWTAnnotationManager: for each annotation the container view creates a spotlight (a real hole) in the background matching the position of the annotation view. 
-FWTAnnotationManager replaces the standard delegate pattern with a faster block approach (optional). There are two customizable blocks: the first one returns the FWTAnnotationView instance/subclass for the particular annotation object and the latter one is called when a particular annotation is tapped. 
-The FWTAnnotationManager, as default behaviour, dismisses itself when the user tap the background and no animations are currently running.        
- 
+FWTEllipseLayer is a CALayer subclass with two custom animatable properties: *startAngle* and *endAngle*. FWTEllipseLayer relies on CoreAnimation default behaviour, it subclasses the *needsDisplayForKey* method, marks itself as dirty every time one of the two properties is changed and lets CoreAnimation do the magic (tweening) for us.
+FWTEllipseLayer exposes very few other properties to make easy and quick to be customized.
+The idea behind is that the *fillColor* is the only one shape style customizable property. If you need a deeper customization you should use instead the *drawPathBlock*. 
+FWTEllipseLayer optimizes the background drawing routine by using a cached CGLayer.
+See below for further details.
+       
 This project is not yet ARC-ready.
-
-##How to use it: initializing
-TODO
-
 
 ##How to use it: configure
 
-####FWTAnnotation
-An FWTAnnotation instance coordinates the creation of an appropriate FWTAnnotationView object to handle the display. This class exposes position and presentation attributes as well as data values.
+####FWTEllipseProgressView
+FWTEllipseProgressView depict the progress of a task on a circular shape. It has a *progress* property and, as with almost every UIKit object, you can set the progress and optionally animate the change. The backing layer of this view is an FWTEllipseLayer instance.
 
-* **presentingRectPortrait** the rectangle in portrait view at which to anchor the annotation
-* **presentingRectLandscape** the rectangle in landscape view at which to anchor the annotation
-* **arrowDirection** the direction in which the popover arrow is pointing
-* **delay** the minimum time before which the animation is started
-* **animated** set YES (default) to animate the presentation
-* **dismissOnTouch** set YES (default) if the annotation should be dismissed when touched
-* **text** the text of the annotation 
-* **image** the image of the annotation
+* **progress** the current progress shown by the receiver
+* **ellipseProgressLayer** return the FWTEllipseLayer backing layer instance
+* **setProgress:animated:** adjusts the current progress shown by the receiver, optionally animating the change
 
-####FWTAnnotationView
-FWTAnnotationView subclasses FWTPopoverView and adds the following extra properties:
+####FWTPieChartView
+FWTPieChartView is a circular chart view divided into sectors, the arc length of each sector is proportional to the quantity it represents. It has a *values* array property and, as with FWTEllipseProgressView, you can set the values and optionally animate the change. FWTPieChartView creates an FWTEllipseLayer for each value of the array. FWTPieChartView adjusts the animation duration for each slide considering the quantity it represents inside the whole shape.
 
-* **contentViewEdgeInsets** the inset or outset margins for the edges of the content view. Use this property to resize and reposition the effective rectangle
-* **textLabel** (_readonly_) the label used for the textual content of the annotation
-* **imageView** (_readonly_) the image view of the annotation
-
-FWTAnnotationView takes into account its text value and resize itself when needed respecting the current contentSize. The image is left aligned and vertically centered as in tableview cells. 
-
-####FWTAnnotationsContainerViewType 
-Each FWTAnnotationManager has an _annotationsContainerView_ that holds all the annotation views. The base class is FWTAnnotationContainerView and it exposes three public methods:
-* **addAnnotation:withView:**
-* **removeAnnotation:withView:**
-* **cancel**
-to make easy to extend and customize the behaviour of the container. 
-FWTAnnotationManager currently comes with two different types of container view:
-
-* **FWTAnnotationContainerViewTypeDefault**
-* **FWTAnnotationContainerViewTypeRadial**
-
-If the annotationsContainerView has a backgroundColor then the FWTAnnotationManager will fade in/fade out the view when adding the first annotation/removing the last one.
-
-
-####FWTAnnotationManagerViewForAnnotationBlock
-This block returns the annotation view for the annotation passed as parameter. 
-
-####FWTAnnotationManagerDidTapAnnotationBlock 
-This block is executed after the user tap the view. 
-
-
-##View hierarchy
+* **values** array containing normalized NSNumbers
+* **containerLayer** contains all FWTEllipseLayer instances
+* **colorForSliceBlock** the block to execute to get the color for the specified slice
+* **minimumAnimationDuration** the minimum value of the animation
+* **maximumAnimationDuration** the maximum value of the animation 
+* **setValues:animated:** set the values, optionally animating the change
+* **restore** reset each slice to have no arc length
+* **restoreAnimated:** reset each slide to have no arc length, optionally animating
 
 ##For your interest
+say about FWTEllipseLayer
 
 ##Demo
-The sample project shows how to use the FWTAnnotationManager and how to create a custom annotation view.
+The sample project shows how to use the FWTEllipseProgressView, FWTPieChartView and how to customize the path/background drawing block.
 
-	//	inside your view controller, time to display the annotations
-	NSArray *annotationsArray = [self _annotationsArray];
-    [self fwt_addAnnotations:annotationsArray];
-    
+``` objective-c
 
-	- (NSArray *)_annotationsArray
-	{
-		// creates some annotations
-		FWTAnnotation *ann0 = [[[FWTAnnotation alloc] init] autorelease];
-    	ann0.presentingRectPortrait = CGRectMake(240, 440, 1, 1);
-    	ann0.presentingRectLandscape = CGRectMake(260, 220, 1, 1);
-    	ann0.arrowDirection = FWTPopoverArrowDirectionDown;
-    	ann0.animated = YES;
-    	ann0.text = @"No, Donny, these men are nihilists, there's nothing to be afraid of.";
-    	
-    	FWTAnnotation *ann1 = […]
-    	
-    	return @[ann0, ann1, …];
-	}
-
+	// progress
+    FWTEllipseProgressView *epv = [[[FWTEllipseProgressView alloc] initWithFrame:frame] autorelease];
+    [self.view addSubview:epv];
+    // update the progress   
+    [epv setProgress:aValue animated:YES];
+	
+	// pie chart
+	FWTPieChartView *pcv = [[[FWTPieChartView alloc] initWithFrame:frame] autorelease];
+	[self.view addSubview:pcv];
+	
+	// update the values
+	NSArray *values = @[@.14, @.26, @.2, @.15, @.25];
+	[pcv setValues:values animated:YES];	
+````
 
 ##Licensing
 Apache License Version 2.0

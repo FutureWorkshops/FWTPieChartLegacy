@@ -47,6 +47,7 @@ static char progressViewKey;
 
 @end
 
+
 #pragma mark - ViewController
 @interface ProgressViewController ()
 @property (nonatomic, assign) BOOL invertedModeEnabled;

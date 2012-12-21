@@ -19,7 +19,7 @@ typedef void (^FWTEllipseLayerDrawBackgroundBlock)(FWTEllipseLayer *, CGContextR
 
 @property (nonatomic, assign) UIEdgeInsets edgeInsets;
 @property (nonatomic, assign) CGFloat startAngle;                                   //  default is 3*M_PI/2
-@property (nonatomic, assign) CGFloat endAngle;
+@property (nonatomic, assign) CGFloat endAngle;                                     //  
 @property (nonatomic, assign) CGFloat arcLength;                                    //  default is 2*M_PI
 @property (nonatomic, retain) UIColor *fillColor;
 @property (nonatomic, assign) CGFloat animationDuration;
@@ -29,5 +29,6 @@ typedef void (^FWTEllipseLayerDrawBackgroundBlock)(FWTEllipseLayer *, CGContextR
 @property (nonatomic, copy) FWTEllipseLayerDrawBackgroundBlock drawBackgroundBlock;
 
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated;
+
 
 @end

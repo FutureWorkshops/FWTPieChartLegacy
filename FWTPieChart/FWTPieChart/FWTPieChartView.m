@@ -7,67 +7,16 @@
 //
 
 #import "FWTPieChartView.h"
-#import "FWTEllipseLayer.h"
 
-@interface UIColor (Utils)
-- (UIColor *)colorByDarkeningWithFactor:(CGFloat)factor;
-@end
-
-@implementation UIColor (Utils)
-
-- (UIColor *)colorByDarkeningWithFactor:(CGFloat)factor
-{
-	// oldComponents is the array INSIDE the original color
-	// changing these changes the original, so we copy it
-	CGFloat *oldComponents = (CGFloat *)CGColorGetComponents([self CGColor]);
-	CGFloat newComponents[4];
-	
-	int numComponents = CGColorGetNumberOfComponents([self CGColor]);
-	
-	switch (numComponents)
-	{
-		case 2:
-		{
-			//grayscale
-			newComponents[0] = oldComponents[0]*factor;
-			newComponents[1] = oldComponents[0]*factor;
-			newComponents[2] = oldComponents[0]*factor;
-			newComponents[3] = oldComponents[1];
-			break;
-		}
-		case 4:
-		{
-			//RGBA
-			newComponents[0] = oldComponents[0]*factor;
-			newComponents[1] = oldComponents[1]*factor;
-			newComponents[2] = oldComponents[2]*factor;
-			newComponents[3] = oldComponents[3];
-			break;
-		}
-	}
-	
-	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-	CGColorRef newColor = CGColorCreate(colorSpace, newComponents);
-	CGColorSpaceRelease(colorSpace);
-	
-	UIColor *retColor = [UIColor colorWithCGColor:newColor];
-	CGColorRelease(newColor);
-	
-	return retColor;
-}
-
-@end
 
 typedef void (^FWTPieChartViewCompletionBlock)(void);
 
 @interface FWTPieChartView ()
-@property (nonatomic, retain) CALayer *containerLayer;
+@property (nonatomic, readwrite, retain) CALayer *containerLayer;
 @property (nonatomic, assign) NSInteger animationCounter;
 @property (nonatomic, assign) BOOL restoreAnimation;
 @property (nonatomic, getter = isAnimating) BOOL animating;
 @property (nonatomic, copy) FWTPieChartViewCompletionBlock completionBlock;
-
-@property (nonatomic, retain) CAShapeLayer *selectedLayer;
 
 @end
 
@@ -75,7 +24,7 @@ typedef void (^FWTPieChartViewCompletionBlock)(void);
 
 - (void)dealloc
 {
-    self.colorForSliceBlock = NULL;
+    self.ellipseLayerAtIndexBlock = NULL;
     self.completionBlock = NULL;
     self.containerLayer = nil;
     self.values = nil;
@@ -86,10 +35,15 @@ typedef void (^FWTPieChartViewCompletionBlock)(void);
 {
     if ((self = [super initWithFrame:frame]))
     {
-        self.colorForSliceBlock = ^(FWTPieChartView *pcv, NSInteger index, NSInteger count){
-            return [UIColor colorWithHue:(CGFloat)index/(CGFloat)count saturation:0.5 brightness:0.75 alpha:1.0];
+        self.ellipseLayerAtIndexBlock = ^(FWTPieChartView *pcv, NSInteger index, NSInteger count){
+            FWTEllipseLayer *toReturn = [FWTEllipseLayer layer];
+            toReturn.contentsScale = [UIScreen mainScreen].scale;
+            toReturn.fillColor = [UIColor colorWithHue:(CGFloat)index/(CGFloat)count saturation:0.5 brightness:0.75 alpha:1.0];
+            return toReturn;
         };
         
+        self.startAngle = 3 * M_PI_2;
+        self.arcLength = 2 * M_PI;
         self.minimumAnimationDuration = .125f;
         self.maximumAnimationDuration = .5f;
     }
@@ -127,18 +81,16 @@ typedef void (^FWTPieChartViewCompletionBlock)(void);
             [self _adjustCountOfEllipseLayers];
             
             // Set the angles on the slices
-            __block CGFloat startAngle = 3*M_PI_2;
-            NSInteger count = self->_values.count;
+            __block CGFloat startAngle = self.startAngle;
             
             [CATransaction begin];
             [CATransaction setDisableActions:YES];
             [self->_values enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 
-                CGFloat angle = [obj floatValue] * 2 * M_PI;
+                CGFloat angle = [obj floatValue] * self.arcLength;
                 
                 FWTEllipseLayer *slice = [self.containerLayer.sublayers objectAtIndex:idx];
                 slice.frame = self.containerLayer.bounds;
-                slice.fillColor = self.colorForSliceBlock(self, idx, count);
                 slice.startAngle = startAngle;
                 slice.endAngle = animated ? startAngle : startAngle + angle;
                 
@@ -186,38 +138,6 @@ typedef void (^FWTPieChartViewCompletionBlock)(void);
     }
 }
 
-#pragma mark - UIResponder
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    CGPoint point = [[touches anyObject] locationInView:self];
-    [self.containerLayer.sublayers enumerateObjectsUsingBlock:^(FWTEllipseLayer *theLayer, NSUInteger idx, BOOL *stop) {
-        if ([theLayer.bezierPath containsPoint:point])
-        {
-            NSLog(@"found:%i", idx);
-            if (!self.selectedLayer)
-            {
-                self.selectedLayer = [CAShapeLayer layer];
-                self.selectedLayer.lineDashPattern = [NSArray arrayWithObjects:[NSNumber numberWithInt:3], [NSNumber numberWithInt:2], nil];
-                [self.layer addSublayer:self.selectedLayer];
-                
-                CABasicAnimation *dashAnimation = [CABasicAnimation animationWithKeyPath:@"lineDashPhase"];
-                [dashAnimation setFromValue:[NSNumber numberWithFloat:0.0f]];
-                [dashAnimation setToValue:[NSNumber numberWithFloat:5.0f]];
-                [dashAnimation setDuration:1.0f];
-                [dashAnimation setRepeatCount:10000];
-                [self.selectedLayer addAnimation:dashAnimation forKey:@"animateLineDashPhase"];
-            }
-            
-            self.selectedLayer.strokeColor = [theLayer.fillColor colorByDarkeningWithFactor:.5f].CGColor;
-            self.selectedLayer.frame = self.containerLayer.bounds;
-            self.selectedLayer.path = [UIBezierPath bezierPathWithCGPath:theLayer.bezierPath.CGPath].CGPath;
-            self.selectedLayer.fillColor = [[UIColor blackColor] colorWithAlphaComponent:.2f].CGColor;
-            
-            *stop = YES;
-        }
-    }];
-}
-
 #pragma mark - Private
 - (void)_adjustCountOfEllipseLayers
 {
@@ -226,7 +146,7 @@ typedef void (^FWTPieChartViewCompletionBlock)(void);
 	if (delta > 0)
     {
 		for (int i = 0; i < delta; i++)
-			[self.containerLayer addSublayer:[[self class] _createEllipseLayer]];
+			[self.containerLayer addSublayer:self.ellipseLayerAtIndexBlock(self, current + i, self.values.count)];
 	}
 	else if (delta < 0)
     {
@@ -244,7 +164,7 @@ typedef void (^FWTPieChartViewCompletionBlock)(void);
 {
     FWTEllipseLayer *theLayer = [self.containerLayer.sublayers objectAtIndex:index];
     NSNumber *value = [self.values objectAtIndex:index];
-    CGFloat angle =  theLayer.endAngle + value.floatValue * 2 * M_PI;
+    CGFloat angle =  theLayer.endAngle + value.floatValue * self.arcLength;
     NSNumber *toValue = [NSNumber numberWithFloat:restoreEnabled ? theLayer.startAngle : angle];
     NSNumber *fromValue = [NSNumber numberWithFloat:theLayer.endAngle];
     
@@ -290,13 +210,6 @@ typedef void (^FWTPieChartViewCompletionBlock)(void);
         } copy];
     }
     return self->_completionBlock;
-}
-
-+ (FWTEllipseLayer *)_createEllipseLayer
-{
-    FWTEllipseLayer *toReturn = [FWTEllipseLayer layer];
-    toReturn.contentsScale = [UIScreen mainScreen].scale;
-    return toReturn;
 }
 
 

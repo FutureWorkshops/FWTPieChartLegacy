@@ -54,10 +54,6 @@
     self.sliderC.continuous = NO;
     [self.sliderC addTarget:self action:@selector(_sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:self.sliderC];
-    
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                            target:self.ellipseProgressView
-                                                                                            action:@selector(restore)] autorelease];
 }
 
 #pragma mark - Action
