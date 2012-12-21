@@ -60,7 +60,7 @@
 
 
 @interface CustomPieChartView ()
-@property (nonatomic, retain) CAShapeLayer *selectedLayer;
+@property (nonatomic, retain) FWTEllipseLayer *selectedLayer;
 @end
 
 @implementation CustomPieChartView
@@ -98,13 +98,14 @@
 //}
 
 #pragma mark - Getters
-- (CAShapeLayer *)selectedLayer
+- (FWTEllipseLayer *)selectedLayer
 {
     if (!self->_selectedLayer)
     {
-        self->_selectedLayer = [[CAShapeLayer alloc] init];
-        self->_selectedLayer.lineDashPattern = [NSArray arrayWithObjects:[NSNumber numberWithInt:3], [NSNumber numberWithInt:2], nil];
-        self->_selectedLayer.fillColor = [UIColor clearColor].CGColor;
+        self->_selectedLayer = [[FWTEllipseLayer alloc] init];
+        self->_selectedLayer.contentsScale = [UIScreen mainScreen].scale;
+//        self->_selectedLayer.lineDashPattern = [NSArray arrayWithObjects:[NSNumber numberWithInt:3], [NSNumber numberWithInt:2], nil];
+//        self->_selectedLayer.fillColor = [UIColor clearColor].CGColor;
         self->_selectedLayer.borderWidth = 1.0f;
     }
     
@@ -136,11 +137,18 @@
 #pragma mark - Privaye
 - (void)_selectEllipseLayerAtPoint:(CGPoint)point
 {
+    [self.containerLayer.sublayers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj setHidden:NO];
+        [obj setOpacity:1.0f];
+    }];
+    
+    [self.selectedLayer removeFromSuperlayer];
+    
     __block BOOL found = NO;
     [self.containerLayer.sublayers enumerateObjectsUsingBlock:^(FWTEllipseLayer *theLayer, NSUInteger idx, BOOL *stop) {
         if ([theLayer.bezierPath containsPoint:point])
         {
-//            theLayer.hidden = YES;
+            theLayer.hidden = YES;
             
             found = YES;
             
@@ -160,38 +168,52 @@
             [self _updateSelectedLayerWithEllipseLayer:theLayer];
             
             
-            *stop = YES;
+//            *stop = YES;
         }
     }];
     
-    if (!found)
-    {
-        [self.containerLayer.sublayers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [obj setHidden:NO];
-        }];
-        
-        [self.selectedLayer removeFromSuperlayer];
-    }
+    
+    
+//    if (!found)
+//    {
+//        [self.containerLayer.sublayers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//            [obj setHidden:NO];
+//        }];
+//        
+//        [self.selectedLayer removeFromSuperlayer];
+//    }
 }
 
 - (void)_updateSelectedLayerWithEllipseLayer:(FWTEllipseLayer *)ellipseLayer
 {
     //
-    CGRect theFrame = CGRectInset(self.containerLayer.frame, 0, 0);
-    CGAffineTransform tranform = CGAffineTransformMakeScale(1.1f, 1.1f);
-    tranform = CGAffineTransformTranslate(tranform, -14, -14);
-    CGPathRef pathRef = CGPathCreateCopyByTransformingPath(ellipseLayer.bezierPath.CGPath, &tranform);
+    CGRect theFrame = CGRectInset(self.containerLayer.frame, -10, -10);
+//    CGAffineTransform tranform = CGAffineTransformMakeScale(1.1f, 1.1f);
+//    tranform = CGAffineTransformTranslate(tranform, -14, -14);
+//    CGPathRef pathRef = CGPathCreateCopyByTransformingPath(ellipseLayer.bezierPath.CGPath, &tranform);
 //    theFrame = CGRectOffset(theFrame, 10, 10);
+//    CGPathRef pathRef = CGPathCreateCopyByTransformingPath(ellipseLayer.bezierPath.CGPath, NULL);
     
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     
-    self.selectedLayer.strokeColor = [ellipseLayer.fillColor colorByDarkeningWithFactor:.5f].CGColor;
-    self.selectedLayer.fillColor = ellipseLayer.fillColor.CGColor;
+//    self.selectedLayer.strokeColor = [ellipseLayer.fillColor colorByDarkeningWithFactor:.5f].CGColor;
+//    self.selectedLayer.fillColor = [ellipseLayer.fillColor colorWithAlphaComponent:.5f].CGColor;
+//    self.selectedLayer.frame = theFrame;
+//    self.selectedLayer.path = pathRef; //[UIBezierPath bezierPathWithCGPath:ellipseLayer.bezierPath.CGPath].CGPath;
+    self.selectedLayer.edgeInsets = UIEdgeInsetsMake(12, 12, 12, 12);
+    self.selectedLayer.startAngle = ellipseLayer.startAngle;
+    self.selectedLayer.endAngle = ellipseLayer.endAngle;
     self.selectedLayer.frame = theFrame;
-    self.selectedLayer.path = pathRef; //[UIBezierPath bezierPathWithCGPath:ellipseLayer.bezierPath.CGPath].CGPath;
+    self.selectedLayer.fillColor = ellipseLayer.fillColor;
     
     [CATransaction commit];
+    
+//    CGFloat radius = self.selectedLayer.radius;
+//    self.selectedLayer.radius = radius + 10.0f;
+    
+    
+    
 }
 
 

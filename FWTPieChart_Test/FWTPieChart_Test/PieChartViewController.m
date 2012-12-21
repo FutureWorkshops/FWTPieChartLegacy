@@ -7,7 +7,7 @@
 //
 
 #import "PieChartViewController.h"
-//#import "FWTPieChartView.h"
+#import "FWTPieChartView.h"
 #import "CustomPieChartView.h"
 
 @interface PieChartViewController ()
@@ -30,7 +30,7 @@
     
     //
     CGRect frame = CGRectMake(0, 0, 300, 300);
-    self.pieChart = [[[CustomPieChartView alloc] initWithFrame:frame] autorelease]; // 
+    self.pieChart = [[[FWTPieChartView alloc] initWithFrame:frame] autorelease]; // 
     self.pieChart.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin;
     self.pieChart.center = self.view.center;
     [self.view addSubview:self.pieChart];

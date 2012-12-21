@@ -19,9 +19,9 @@ NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
 
 #pragma mark - FWTEllipseProgressLayer
 @interface FWTEllipseLayer ()
-@property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, assign) CGPoint ellipseCenter;
 @property (nonatomic, assign) CGRect availableRect;
+@property (nonatomic, assign) CGFloat radius;
 @property (nonatomic, readwrite) CGLayerRef backgroundCGLayer;
 @property (nonatomic, readwrite, retain) UIBezierPath *bezierPath;
 
@@ -73,8 +73,8 @@ NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
         
         self.arcLength = source.arcLength;
         self.availableRect = source.availableRect;
-        self.radius = source.radius;
         self.ellipseCenter = source.ellipseCenter;
+        self.radius = source.radius;
         
         self.backgroundCGLayer = CGLayerRetain(source.backgroundCGLayer);
         self.drawPathBlock = source.drawPathBlock;
@@ -136,12 +136,15 @@ NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
 #pragma mark - Private
 - (void)_updatePrivateVars
 {
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     self.availableRect = UIEdgeInsetsInsetRect(self.bounds, self.edgeInsets);
     self.radius = CGRectGetWidth(self.availableRect)*.5f;
     self.ellipseCenter = CGPointMake(CGRectGetMidX(self.availableRect), CGRectGetMidY(self.availableRect));
     
     CGLayerRelease(self.backgroundCGLayer);
     self.backgroundCGLayer = NULL;
+    [CATransaction commit];
 }
 
 - (UIBezierPath *)_createEllipsePath
