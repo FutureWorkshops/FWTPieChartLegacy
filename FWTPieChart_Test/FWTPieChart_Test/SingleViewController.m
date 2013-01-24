@@ -27,7 +27,7 @@
 {
     [super loadView];
     
-    self.title = @"Pie Chart";
+    self.title = @"Progress View";
     
     //
     CGFloat min = sideWidthBlock(self.view.frame, 20.0f);
