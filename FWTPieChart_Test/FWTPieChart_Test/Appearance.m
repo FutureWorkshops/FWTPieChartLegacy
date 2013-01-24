@@ -94,7 +94,7 @@
 {
     FWTEllipseLayerDrawPathBlock toReturn = ^(FWTEllipseLayer *elp, CGContextRef ctx, UIBezierPath *path){
         CGContextAddPath(ctx, path.CGPath);
-        CGContextSetFillColorWithColor(ctx, elp.fillColor.CGColor);
+        CGContextSetFillColorWithColor(ctx, elp.fillColor);
         CGContextFillPath(ctx);
         
         CGRect ellipseRect = CGRectInset(elp.bounds, 12.0f, 12.0f);

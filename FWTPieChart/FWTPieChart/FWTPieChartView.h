@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FWTEllipseLayer.h"
 
+FOUNDATION_EXPORT CGFloat const FWTPieChartViewMinimumAnimationDuration;    //  .125f
+FOUNDATION_EXPORT CGFloat const FWTPieChartViewMaximumAnimationDuration;    //  .5f
+
 @class FWTPieChartView;
 typedef FWTEllipseLayer *(^FWTPieChartEllipseLayerAtIndexBlock)(FWTPieChartView *, NSInteger, NSInteger);
 

@@ -2,7 +2,7 @@
 
 ![FWTPieChart screenshot](http://grab.by/igoS)
 
-FWTPieChart is a small set of classes that shows how to create circular progress view and pie charts. The core is the FWTEllipseLayer, a custom CALayer subclass that adds a couple of custom animatable properties and exposes few blocks as extension points.
+FWTPieChart is a small set of classes that shows how to create circular progress view and pie charts. At the core of it lies the FWTEllipseLayer, a custom CALayer subclass that adds a couple of custom animatable properties and exposes few blocks as extension points.
 
 ##Requirements
 * XCode 4.4.1 or higher
@@ -10,8 +10,8 @@ FWTPieChart is a small set of classes that shows how to create circular progress
 
 ##Features
 FWTEllipseLayer is a CALayer subclass with two custom animatable properties: *startAngle* and *endAngle*. FWTEllipseLayer relies on CoreAnimation default behaviour, it subclasses the *needsDisplayForKey* method, marks itself as dirty every time one of the two properties is changed and lets CoreAnimation do the magic (tweening) for us.
-FWTEllipseLayer exposes very few other properties to make easy and quick to be customized.
-The idea behind is that the *fillColor* is the only one shape style customizable property. If you need a deeper customization you should use instead the *drawPathBlock*. 
+FWTEllipseLayer exposes only a few other properties to make the customisation quick and easy.
+The *fillColor* property is the only customisable shape style. If you need additional customisation, use the *drawPathBlock* property instead.  
 FWTEllipseLayer optimizes the background drawing routine by using a cached CGLayer.
 See below for further details.
        
@@ -32,14 +32,13 @@ FWTPieChartView is a circular chart view divided into sectors, the arc length of
 * **values** array containing normalized NSNumbers
 * **containerLayer** contains all FWTEllipseLayer instances
 * **colorForSliceBlock** the block to execute to get the color for the specified slice
+* **FWTPieChartEllipseLayerAtIndexBlock** the block returns the instance of FWTEllipseLayer or a subclass of it at the specified index 
 * **minimumAnimationDuration** the minimum value of the animation
 * **maximumAnimationDuration** the maximum value of the animation 
 * **setValues:animated:** set the values, optionally animating the change
 * **restore** reset each slice to have no arc length
 * **restoreAnimated:** reset each slide to have no arc length, optionally animating
 
-##For your interest
-say about FWTEllipseLayer
 
 ##Demo
 The sample project shows how to use the FWTEllipseProgressView, FWTPieChartView and how to customize the path/background drawing block.

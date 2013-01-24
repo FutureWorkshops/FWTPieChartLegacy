@@ -20,10 +20,10 @@
 		A923EDE3167A0E3B00709A25 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A923EDE2167A0E3B00709A25 /* QuartzCore.framework */; };
 		A923EDEE167A0EAD00709A25 /* Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDE5167A0EAD00709A25 /* Appearance.m */; };
 		A923EDEF167A0EAD00709A25 /* PieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDE7167A0EAD00709A25 /* PieChartViewController.m */; };
-		A923EDF0167A0EAD00709A25 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDE9167A0EAD00709A25 /* ProgressViewController.m */; };
+		A923EDF0167A0EAD00709A25 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDE9167A0EAD00709A25 /* TableViewController.m */; };
 		A923EDF1167A0EAD00709A25 /* SamplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */; };
 		A923EDF2167A0EAD00709A25 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDED167A0EAD00709A25 /* SingleViewController.m */; };
-		A9527BFF167B521900C24AD7 /* CustomPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9527BFE167B521900C24AD7 /* CustomPieChartView.m */; };
+		A9B7092516B159D800BF147D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B7092416B159D800BF147D /* Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,14 +46,14 @@
 		A923EDE5167A0EAD00709A25 /* Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appearance.m; sourceTree = "<group>"; };
 		A923EDE6167A0EAD00709A25 /* PieChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartViewController.h; sourceTree = "<group>"; };
 		A923EDE7167A0EAD00709A25 /* PieChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartViewController.m; sourceTree = "<group>"; };
-		A923EDE8167A0EAD00709A25 /* ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressViewController.h; sourceTree = "<group>"; };
-		A923EDE9167A0EAD00709A25 /* ProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressViewController.m; sourceTree = "<group>"; };
+		A923EDE8167A0EAD00709A25 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		A923EDE9167A0EAD00709A25 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		A923EDEA167A0EAD00709A25 /* SamplePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplePickerViewController.h; sourceTree = "<group>"; };
 		A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplePickerViewController.m; sourceTree = "<group>"; };
 		A923EDEC167A0EAD00709A25 /* SingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleViewController.h; sourceTree = "<group>"; };
 		A923EDED167A0EAD00709A25 /* SingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleViewController.m; sourceTree = "<group>"; };
-		A9527BFD167B521900C24AD7 /* CustomPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPieChartView.h; sourceTree = "<group>"; };
-		A9527BFE167B521900C24AD7 /* CustomPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPieChartView.m; sourceTree = "<group>"; };
+		A9B7092316B159D800BF147D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		A9B7092416B159D800BF147D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,10 +106,9 @@
 			children = (
 				A923EDBF167A0D0800709A25 /* AppDelegate.h */,
 				A923EDC0167A0D0800709A25 /* AppDelegate.m */,
-				A923EDEA167A0EAD00709A25 /* SamplePickerViewController.h */,
-				A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */,
-				A923EDF3167A0EBB00709A25 /* EllipseProgress */,
-				A923EDF4167A0EEC00709A25 /* PieChart */,
+				A9B7097616B189D400BF147D /* Common */,
+				A923EDF3167A0EBB00709A25 /* ProgressView */,
+				A923EDF4167A0EEC00709A25 /* PieChartView */,
 				A923EDB7167A0D0800709A25 /* Supporting Files */,
 			);
 			path = FWTPieChart_Test;
@@ -129,28 +128,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A923EDF3167A0EBB00709A25 /* EllipseProgress */ = {
+		A923EDF3167A0EBB00709A25 /* ProgressView */ = {
 			isa = PBXGroup;
 			children = (
 				A923EDEC167A0EAD00709A25 /* SingleViewController.h */,
 				A923EDED167A0EAD00709A25 /* SingleViewController.m */,
-				A923EDE8167A0EAD00709A25 /* ProgressViewController.h */,
-				A923EDE9167A0EAD00709A25 /* ProgressViewController.m */,
+				A923EDE8167A0EAD00709A25 /* TableViewController.h */,
+				A923EDE9167A0EAD00709A25 /* TableViewController.m */,
 				A923EDE4167A0EAD00709A25 /* Appearance.h */,
 				A923EDE5167A0EAD00709A25 /* Appearance.m */,
 			);
-			name = EllipseProgress;
+			name = ProgressView;
 			sourceTree = "<group>";
 		};
-		A923EDF4167A0EEC00709A25 /* PieChart */ = {
+		A923EDF4167A0EEC00709A25 /* PieChartView */ = {
 			isa = PBXGroup;
 			children = (
 				A923EDE6167A0EAD00709A25 /* PieChartViewController.h */,
 				A923EDE7167A0EAD00709A25 /* PieChartViewController.m */,
-				A9527BFD167B521900C24AD7 /* CustomPieChartView.h */,
-				A9527BFE167B521900C24AD7 /* CustomPieChartView.m */,
 			);
-			name = PieChart;
+			name = PieChartView;
+			sourceTree = "<group>";
+		};
+		A9B7097616B189D400BF147D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A923EDEA167A0EAD00709A25 /* SamplePickerViewController.h */,
+				A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */,
+				A9B7092316B159D800BF147D /* Utils.h */,
+				A9B7092416B159D800BF147D /* Utils.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,10 +230,10 @@
 				A923EDC1167A0D0800709A25 /* AppDelegate.m in Sources */,
 				A923EDEE167A0EAD00709A25 /* Appearance.m in Sources */,
 				A923EDEF167A0EAD00709A25 /* PieChartViewController.m in Sources */,
-				A923EDF0167A0EAD00709A25 /* ProgressViewController.m in Sources */,
+				A923EDF0167A0EAD00709A25 /* TableViewController.m in Sources */,
 				A923EDF1167A0EAD00709A25 /* SamplePickerViewController.m in Sources */,
 				A923EDF2167A0EAD00709A25 /* SingleViewController.m in Sources */,
-				A9527BFF167B521900C24AD7 /* CustomPieChartView.m in Sources */,
+				A9B7092516B159D800BF147D /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../FWTPieChart/FWTPieChart/;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -287,7 +295,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../FWTPieChart/FWTPieChart/;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

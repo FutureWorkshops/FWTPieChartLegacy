@@ -8,16 +8,17 @@
 
 #import "PieChartViewController.h"
 #import "FWTPieChartView.h"
-#import "CustomPieChartView.h"
 
 @interface PieChartViewController ()
 @property (nonatomic, retain) FWTPieChartView *pieChart;
+@property (nonatomic, retain) UISegmentedControl *segmentedControl;
 @end
 
 @implementation PieChartViewController
 
 - (void)dealloc
 {
+    self.segmentedControl = nil;
     self.pieChart = nil;
     [super dealloc];
 }
@@ -29,22 +30,40 @@
     self.title = @"Pie Chart";
     
     //
-    CGRect frame = CGRectMake(0, 0, 300, 300);
-    self.pieChart = [[[FWTPieChartView alloc] initWithFrame:frame] autorelease]; // 
+    CGFloat min = sideWidthBlock(self.view.frame, 20.0f);
+    self.pieChart = [[[FWTPieChartView alloc] init] autorelease]; // 
     self.pieChart.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin;
+    self.pieChart.bounds = CGRectMake(0, 0, min, min);
     self.pieChart.center = self.view.center;
     [self.view addSubview:self.pieChart];
     
-    
-    UISegmentedControl *sc = [[[UISegmentedControl alloc] initWithItems:@[@"D", @"C"]] autorelease];
-    sc.momentary = YES;
-    sc.segmentedControlStyle = UISegmentedControlStyleBar;
-    sc.frame = CGRectMake(.0f, .0f, 90.0f, 32.0f);
-    [sc addTarget:self action:@selector(doAction:) forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:sc] autorelease];
 }
 
-- (void)doAction:(UISegmentedControl *)segmentedControl
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (!self.segmentedControl)
+    {
+        CGRect sliderFrame = CGRectInset(self.navigationController.toolbar.bounds, 5.0f, 5.0f);
+        self.segmentedControl = [[[UISegmentedControl alloc] initWithItems:@[@"generate", @"clear"]] autorelease];
+        self.segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+        self.segmentedControl.momentary = YES;
+        self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+        self.segmentedControl.frame = sliderFrame;
+        [self.segmentedControl addTarget:self action:@selector(_doAction:) forControlEvents:UIControlEventValueChanged];
+        [self.navigationController.toolbar addSubview:self.segmentedControl];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.segmentedControl removeFromSuperview];
+}
+
+#pragma mark - Private
+- (void)_doAction:(UISegmentedControl *)segmentedControl
 {
     if (segmentedControl.selectedSegmentIndex == 0)
     {

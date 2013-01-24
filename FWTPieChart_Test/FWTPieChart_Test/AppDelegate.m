@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SamplePickerViewController.h"
-#import "ProgressViewController.h"
+#import "TableViewController.h"
 #import "PieChartViewController.h"
 #import "SingleViewController.h"
 
@@ -25,14 +25,11 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
-    //    ViewController *vc = [[[ViewController alloc] init] autorelease];
-    //    PieChartViewController *vc = [[[PieChartViewController alloc] init] autorelease];
-    //    SingleViewController *vc = [[[SingleViewController alloc] init] autorelease];
-    
     SamplePickerViewController *vc = [[[SamplePickerViewController alloc] init] autorelease];
-    vc.samples = @[@"SingleViewController", @"ProgressViewController", @"PieChartViewController"];
+    vc.samples = @[@"SingleViewController", @"TableViewController", @"PieChartViewController"];
     
     UINavigationController *nc = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
+    nc.toolbarHidden = NO;
     self.window.rootViewController = nc;
     [self.window makeKeyAndVisible];
     return YES;

@@ -11,15 +11,14 @@
 
 @interface SingleViewController ()
 @property (nonatomic, retain) FWTEllipseProgressView *ellipseProgressView;
-@property (nonatomic, retain) UISlider *sliderA, *sliderB, *sliderC;
+@property (nonatomic, retain) UISlider *slider;
 @end
 
 @implementation SingleViewController
 
 - (void)dealloc
 {
-    self.sliderB = nil;
-    self.sliderA = nil;
+    self.slider = nil;
     self.ellipseProgressView = nil;
     [super dealloc];
 }
@@ -31,46 +30,47 @@
     self.title = @"Pie Chart";
     
     //
-    CGRect frame = CGRectMake(0, 0, 300, 300);
-    self.ellipseProgressView = [[[FWTEllipseProgressView alloc] initWithFrame:frame] autorelease];
+    CGFloat min = sideWidthBlock(self.view.frame, 20.0f);
+    self.ellipseProgressView = [[[FWTEllipseProgressView alloc] init] autorelease];
     self.ellipseProgressView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin;
+    self.ellipseProgressView.bounds = CGRectMake(0, 0, min, min);
     self.ellipseProgressView.center = self.view.center;
     [self.view addSubview:self.ellipseProgressView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    CGRect sliderFrame = CGRectMake(.0f, 10.0f, 320.0f, 30.0f);
-    self.sliderA = [[[UISlider alloc] initWithFrame:sliderFrame] autorelease];
-    self.sliderA.continuous = NO;
-    [self.sliderA addTarget:self action:@selector(_sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:self.sliderA];
+    CGFloat min = sideWidthBlock(self.view.frame, 20.0f);
+    if (min != CGRectGetWidth(self.ellipseProgressView.frame))
+        self.ellipseProgressView.bounds = CGRectMake(0, 0, min, min);
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    sliderFrame = CGRectMake(.0f, 40.0f, 320.0f, 30.0f);
-    self.sliderB = [[[UISlider alloc] initWithFrame:sliderFrame] autorelease];
-    self.sliderB.continuous = NO;
-    [self.sliderB addTarget:self action:@selector(_sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:self.sliderB];
-    
-    sliderFrame = CGRectMake(.0f, 70.0f, 320.0f, 30.0f);
-    self.sliderC = [[[UISlider alloc] initWithFrame:sliderFrame] autorelease];
-    self.sliderC.continuous = NO;
-    [self.sliderC addTarget:self action:@selector(_sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:self.sliderC];
+    if (!self.slider)
+    {
+        CGRect sliderFrame = CGRectInset(self.navigationController.toolbar.bounds, 5.0f, .0f);
+        self.slider = [[[UISlider alloc] initWithFrame:sliderFrame] autorelease];
+        self.slider.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+        [self.slider addTarget:self action:@selector(_sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [self.navigationController.toolbar addSubview:self.slider];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.slider removeFromSuperview];
 }
 
 #pragma mark - Action
 - (void)_sliderValueChanged:(UISlider *)slider
 {
-    if (slider == self.sliderA)
-    {
-        self.ellipseProgressView.ellipseProgressLayer.startAngle = 2*M_PI*slider.value + 3*M_PI_2;
-    }
-    else if (slider == self.sliderB)
-    {
-        self.ellipseProgressView.ellipseProgressLayer.endAngle = 2*M_PI*(1-slider.value) + self.ellipseProgressView.ellipseProgressLayer.startAngle;
-    }
-    else
-    {
-        [self.ellipseProgressView setProgress:slider.value animated:YES];
-    }
+    [self.ellipseProgressView setProgress:slider.value animated:NO];
 }
 
 @end
