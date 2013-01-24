@@ -23,7 +23,6 @@
 		A923EDF0167A0EAD00709A25 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDE9167A0EAD00709A25 /* TableViewController.m */; };
 		A923EDF1167A0EAD00709A25 /* SamplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */; };
 		A923EDF2167A0EAD00709A25 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDED167A0EAD00709A25 /* SingleViewController.m */; };
-		A9527BFF167B521900C24AD7 /* CustomPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9527BFE167B521900C24AD7 /* CustomPieChartView.m */; };
 		A9B7092516B159D800BF147D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B7092416B159D800BF147D /* Utils.m */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +52,6 @@
 		A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplePickerViewController.m; sourceTree = "<group>"; };
 		A923EDEC167A0EAD00709A25 /* SingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleViewController.h; sourceTree = "<group>"; };
 		A923EDED167A0EAD00709A25 /* SingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleViewController.m; sourceTree = "<group>"; };
-		A9527BFD167B521900C24AD7 /* CustomPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPieChartView.h; sourceTree = "<group>"; };
-		A9527BFE167B521900C24AD7 /* CustomPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPieChartView.m; sourceTree = "<group>"; };
 		A9B7092316B159D800BF147D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		A9B7092416B159D800BF147D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,8 +146,6 @@
 			children = (
 				A923EDE6167A0EAD00709A25 /* PieChartViewController.h */,
 				A923EDE7167A0EAD00709A25 /* PieChartViewController.m */,
-				A9527BFD167B521900C24AD7 /* CustomPieChartView.h */,
-				A9527BFE167B521900C24AD7 /* CustomPieChartView.m */,
 			);
 			name = PieChartView;
 			sourceTree = "<group>";
@@ -238,7 +233,6 @@
 				A923EDF0167A0EAD00709A25 /* TableViewController.m in Sources */,
 				A923EDF1167A0EAD00709A25 /* SamplePickerViewController.m in Sources */,
 				A923EDF2167A0EAD00709A25 /* SingleViewController.m in Sources */,
-				A9527BFF167B521900C24AD7 /* CustomPieChartView.m in Sources */,
 				A9B7092516B159D800BF147D /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

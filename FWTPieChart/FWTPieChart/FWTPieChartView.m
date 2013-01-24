@@ -8,8 +8,10 @@
 
 #import "FWTPieChartView.h"
 
-
 typedef void (^FWTPieChartViewCompletionBlock)(void);
+
+CGFloat const FWTPieChartViewMinimumAnimationDuration   = .125f;
+CGFloat const FWTPieChartViewMaximumAnimationDuration   = .5f;
 
 @interface FWTPieChartView ()
 @property (nonatomic, readwrite, retain) CALayer *containerLayer;
@@ -42,10 +44,10 @@ typedef void (^FWTPieChartViewCompletionBlock)(void);
             return toReturn;
         };
         
-        self.startAngle = 3 * M_PI_2;
-        self.arcLength = 2 * M_PI;
-        self.minimumAnimationDuration = .125f;
-        self.maximumAnimationDuration = .5f;
+        self.startAngle = FWTEllipseLayerStartAngle;
+        self.arcLength = FWTEllipseLayerArcLength;
+        self.minimumAnimationDuration = FWTPieChartViewMinimumAnimationDuration;
+        self.maximumAnimationDuration = FWTPieChartViewMaximumAnimationDuration;
     }
     return self;
 }

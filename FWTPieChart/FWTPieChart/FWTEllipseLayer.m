@@ -8,7 +8,7 @@
 
 #import "FWTEllipseLayer.h"
 
-#define FWT_EL_FILL_COLOR               [UIColor lightGrayColor].CGColor
+#define FWT_EL_FILL_COLOR                        [UIColor lightGrayColor].CGColor
 
 NSString *const FWTEllipseLayerStartAngleKey    = @"startAngle";
 NSString *const FWTEllipseLayerEndAngleKey      = @"endAngle";

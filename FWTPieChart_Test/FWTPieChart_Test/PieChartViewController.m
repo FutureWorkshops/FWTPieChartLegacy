@@ -8,7 +8,6 @@
 
 #import "PieChartViewController.h"
 #import "FWTPieChartView.h"
-#import "CustomPieChartView.h"
 
 @interface PieChartViewController ()
 @property (nonatomic, retain) FWTPieChartView *pieChart;
