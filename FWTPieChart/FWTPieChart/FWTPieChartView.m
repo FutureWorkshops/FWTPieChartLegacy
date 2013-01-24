@@ -38,7 +38,7 @@ typedef void (^FWTPieChartViewCompletionBlock)(void);
         self.ellipseLayerAtIndexBlock = ^(FWTPieChartView *pcv, NSInteger index, NSInteger count){
             FWTEllipseLayer *toReturn = [FWTEllipseLayer layer];
             toReturn.contentsScale = [UIScreen mainScreen].scale;
-            toReturn.fillColor = [UIColor colorWithHue:(CGFloat)index/(CGFloat)count saturation:0.5 brightness:0.75 alpha:1.0];
+            toReturn.fillColor = [UIColor colorWithHue:(CGFloat)index/(CGFloat)count saturation:0.5 brightness:0.75 alpha:1.0].CGColor;
             return toReturn;
         };
         

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Marco Meschini. All rights reserved.
 //
 
-#import "ProgressViewController.h"
+#import "TableViewController.h"
 #import "FWTEllipseProgressView.h"
 
 #import "Appearance.h"
@@ -25,6 +25,16 @@ static char progressViewKey;
 {
     self.progressView = nil;
     [super dealloc];
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]))
+    {
+        self.textLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+        self.textLabel.numberOfLines = 0;
+    }
+    return self;
 }
 
 - (void)layoutSubviews
@@ -49,14 +59,14 @@ static char progressViewKey;
 
 
 #pragma mark - ViewController
-@interface ProgressViewController ()
+@interface TableViewController ()
 @property (nonatomic, assign) BOOL invertedModeEnabled;
 @property (nonatomic, retain) NSArray *items;
 @property (nonatomic, retain) UISlider *slider;
 
 @end
 
-@implementation ProgressViewController
+@implementation TableViewController
 
 - (void)dealloc
 {
@@ -73,9 +83,15 @@ static char progressViewKey;
     
     self.title = @"Sample";
     
-    self.tableView.rowHeight = 100.0f;
     self.tableView.backgroundColor = [UIColor colorWithWhite:.9f alpha:1.0f];
     self.tableView.separatorColor = [UIColor blackColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.tableView.rowHeight = ((NSInteger)CGRectGetHeight(self.tableView.frame)/self.items.count);
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -87,20 +103,15 @@ static char progressViewKey;
         CGRect sliderFrame = CGRectInset(self.navigationController.toolbar.bounds, 5.0f, .0f);
         self.slider = [[[UISlider alloc] initWithFrame:sliderFrame] autorelease];
         self.slider.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-        //    slider.continuous = NO;
         [self.slider addTarget:self action:@selector(_sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         [self.navigationController.toolbar addSubview:self.slider];
     }
-    
-    self.navigationController.toolbarHidden = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.slider removeFromSuperview];
-    
-    self.navigationController.toolbarHidden = YES;
 }
 
 #pragma mark - Action
@@ -108,11 +119,9 @@ static char progressViewKey;
 {
     CGFloat value = self.invertedModeEnabled ? 1-slider.value : slider.value;
     
-    for (TableViewCell *cell in self.tableView.visibleCells)
-    {
-        if ([cell.progressView respondsToSelector:@selector(setProgress:animated:)])
-            [cell.progressView setProgress:value animated:YES];
-    }
+    [self.tableView.visibleCells enumerateObjectsUsingBlock:^(TableViewCell *cell, NSUInteger idx, BOOL *stop) {
+        [cell.progressView setProgress:value animated:YES];
+    }];
 }
 
 #pragma mark - Getters
@@ -124,21 +133,24 @@ static char progressViewKey;
         FWTEllipseProgressView *base = [[[FWTEllipseProgressView alloc] init] autorelease];
         base.ellipseProgressLayer.startAngle = 3*M_PI_2 + 5.235987755983f;
         base.ellipseProgressLayer.endAngle = base.ellipseProgressLayer.startAngle;
-        objc_setAssociatedObject(base, &progressViewKey, @"default - s: 5.23r", OBJC_ASSOCIATION_RETAIN);
+        base.progress = self.invertedModeEnabled ? 1.0f : .0f;
+        objc_setAssociatedObject(base, &progressViewKey, @"- default\n- startAngle: 5.23r", OBJC_ASSOCIATION_RETAIN);
         
         //  STC
         FWTEllipseProgressView *stc = [[[FWTEllipseProgressView alloc] init] autorelease];
         stc.backgroundColor = [UIColor clearColor];
         stc.ellipseProgressLayer.drawPathBlock = [Appearance StyleSTCDashboardDrawPathBlock];
         stc.ellipseProgressLayer.drawBackgroundBlock = [Appearance StyleSTCDashboardBackgroundBlock];
+        stc.progress = self.invertedModeEnabled ? 1.0f : .0f;
         objc_setAssociatedObject(stc, &progressViewKey, @"stc", OBJC_ASSOCIATION_RETAIN);
         
         //  The Open
         FWTEllipseProgressView *theOpen = [[[FWTEllipseProgressView alloc] init] autorelease];
         theOpen.backgroundColor = [UIColor clearColor];
-        theOpen.ellipseProgressLayer.fillColor = [UIColor whiteColor];
+        theOpen.ellipseProgressLayer.fillColor = [UIColor whiteColor].CGColor;
         theOpen.ellipseProgressLayer.drawPathBlock = [Appearance StyleTheOpenDrawPathBlock];
         theOpen.ellipseProgressLayer.drawBackgroundBlock = [Appearance StyleTheOpenBackgroundBlock];
+        theOpen.progress = self.invertedModeEnabled ? 1.0f : .0f;
         objc_setAssociatedObject(theOpen, &progressViewKey, @"the open", OBJC_ASSOCIATION_RETAIN);
         
         //  from ten to two
@@ -148,7 +160,8 @@ static char progressViewKey;
         fromTenToTwo.ellipseProgressLayer.endAngle = base.ellipseProgressLayer.startAngle;
         fromTenToTwo.ellipseProgressLayer.arcLength = 2*M_PI/3;
         fromTenToTwo.ellipseProgressLayer.drawPathBlock = [Appearance StyleFromTenToTwoDrawPathBlock];
-        objc_setAssociatedObject(fromTenToTwo, &progressViewKey, @"custom - s:5.23r (1/3)", OBJC_ASSOCIATION_RETAIN);
+        fromTenToTwo.progress = self.invertedModeEnabled ? 1.0f : .0f;
+        objc_setAssociatedObject(fromTenToTwo, &progressViewKey, @"- custom\n- startAngle: 5.23r\n- lenght: 2π/3", OBJC_ASSOCIATION_RETAIN);
         
         self->_items = [@[base, stc, theOpen, fromTenToTwo] retain];
     }

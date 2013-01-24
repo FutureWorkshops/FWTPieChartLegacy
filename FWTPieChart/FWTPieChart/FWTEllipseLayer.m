@@ -7,15 +7,17 @@
 //
 
 #import "FWTEllipseLayer.h"
-#define FWT_EL_EDGE_INSETS              UIEdgeInsetsMake(2.0f, 2.0f, 2.0f, 2.0f)
-#define FWT_EL_START_ANGLE              3 * M_PI_2
-#define FWT_EL_END_ANGLE                FWT_EL_START_ANGLE
-#define FWT_EL_ARC_LENGTH               2 * M_PI
-#define FWT_EL_FILL_COLOR               [UIColor lightGrayColor]
-#define FWT_EL_ANIMATION_DURATION       .25f
 
-NSString *const FWTEllipseLayerStartAngleKey = @"startAngle";
-NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
+#define FWT_EL_FILL_COLOR               [UIColor lightGrayColor].CGColor
+
+NSString *const FWTEllipseLayerStartAngleKey    = @"startAngle";
+NSString *const FWTEllipseLayerEndAngleKey      = @"endAngle";
+
+UIEdgeInsets const FWTEllipseLayerEdgeInsets    = (UIEdgeInsets){2.0f, 2.0f, 2.0f, 2.0f};
+CGFloat const FWTEllipseLayerStartAngle         = 3 * M_PI_2;
+CGFloat const FWTEllipseLayerEndAngle           = 3 * M_PI_2;
+CGFloat const FWTEllipseLayerArcLength          = 2 * M_PI;
+CGFloat const FWTEllipseLayerAnimationDuration  = .25f;
 
 #pragma mark - FWTEllipseProgressLayer
 @interface FWTEllipseLayer ()
@@ -29,9 +31,13 @@ NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
 
 @implementation FWTEllipseLayer
 @dynamic startAngle, endAngle;
+@synthesize fillColor = _fillColor;
 
 - (void)dealloc
 {
+    if (self->_fillColor)
+        self.fillColor = NULL;
+
     self.bezierPath = nil;
     CGLayerRelease(self.backgroundCGLayer);
     self.backgroundCGLayer = NULL;
@@ -49,15 +55,14 @@ NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
         //
         [CATransaction begin];
         [CATransaction setDisableActions:YES];
-        self.startAngle         = FWT_EL_START_ANGLE;
-        self.endAngle           = FWT_EL_END_ANGLE;
+        self.startAngle         = FWTEllipseLayerStartAngle;
+        self.endAngle           = FWTEllipseLayerEndAngle;
         [CATransaction commit];
         
         //
-        self.edgeInsets         = FWT_EL_EDGE_INSETS;
-        self.arcLength          = FWT_EL_ARC_LENGTH;
-        self.fillColor          = FWT_EL_FILL_COLOR;
-        self.animationDuration  = FWT_EL_ANIMATION_DURATION;
+        self.edgeInsets         = FWTEllipseLayerEdgeInsets;
+        self.arcLength          = FWTEllipseLayerArcLength;
+        self.animationDuration  = FWTEllipseLayerAnimationDuration;
     }
     return self;
 }
@@ -120,7 +125,7 @@ NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
     }
     
     //
-    self.bezierPath = [self _createEllipsePath];
+    self.bezierPath = [self _getEllipsePath];
     
     //
     if (self.drawPathBlock)
@@ -128,7 +133,7 @@ NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
     else
     {
         CGContextAddPath(ctx, self.bezierPath.CGPath);
-        CGContextSetFillColorWithColor(ctx, self.fillColor.CGColor);
+        CGContextSetFillColorWithColor(ctx, self.fillColor);
         CGContextFillPath(ctx);
     }
 }
@@ -147,7 +152,7 @@ NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
     [CATransaction commit];
 }
 
-- (UIBezierPath *)_createEllipsePath
+- (UIBezierPath *)_getEllipsePath
 {
     if (self.startAngle == self.endAngle) return nil;
     
@@ -168,6 +173,27 @@ NSString *const FWTEllipseLayerEndAngleKey   = @"endAngle";
 }
 
 #pragma mark - Public
+- (void)setFillColor:(CGColorRef)fillColor
+{
+    if (self->_fillColor != fillColor)
+    {
+        CGColorRelease(self->_fillColor);
+        self->_fillColor = NULL;
+        
+        if (fillColor)
+        {
+            self->_fillColor = CGColorRetain(fillColor);
+            [self setNeedsDisplay];
+        }
+    }
+}
+
+- (CGColorRef)fillColor
+{
+    if (!self->_fillColor) self->_fillColor = CGColorRetain(FWT_EL_FILL_COLOR);
+    return self->_fillColor;
+}
+
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated
 {
     if (self->_progress != progress)

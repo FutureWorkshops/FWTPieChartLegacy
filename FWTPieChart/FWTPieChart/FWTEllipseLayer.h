@@ -8,8 +8,13 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-extern NSString *const FWTEllipseLayerStartAngleKey;
-extern NSString *const FWTEllipseLayerEndAngleKey;
+FOUNDATION_EXPORT NSString *const FWTEllipseLayerStartAngleKey;
+FOUNDATION_EXPORT NSString *const FWTEllipseLayerEndAngleKey;
+FOUNDATION_EXPORT UIEdgeInsets const FWTEllipseLayerEdgeInsets;
+FOUNDATION_EXPORT CGFloat const FWTEllipseLayerStartAngle;
+FOUNDATION_EXPORT CGFloat const FWTEllipseLayerEndAngle;
+FOUNDATION_EXPORT CGFloat const FWTEllipseLayerArcLength;
+FOUNDATION_EXPORT CGFloat const FWTEllipseLayerAnimationDuration;
 
 @class FWTEllipseLayer;
 typedef void (^FWTEllipseLayerDrawPathBlock)(FWTEllipseLayer *, CGContextRef, UIBezierPath *);
@@ -21,7 +26,7 @@ typedef void (^FWTEllipseLayerDrawBackgroundBlock)(FWTEllipseLayer *, CGContextR
 @property (nonatomic, assign) CGFloat startAngle;                                   //  default is 3*M_PI/2
 @property (nonatomic, assign) CGFloat endAngle;                                     //  
 @property (nonatomic, assign) CGFloat arcLength;                                    //  default is 2*M_PI
-@property (nonatomic, retain) UIColor *fillColor;
+@property (nonatomic) CGColorRef fillColor;
 @property (nonatomic, assign) CGFloat animationDuration;
 @property (nonatomic, assign) CGFloat progress;
 @property (nonatomic, readonly, retain) UIBezierPath *bezierPath;

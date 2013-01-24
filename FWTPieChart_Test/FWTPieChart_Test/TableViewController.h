@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProgressViewController : UITableViewController
+@interface TableViewController : UITableViewController
 
 @end
