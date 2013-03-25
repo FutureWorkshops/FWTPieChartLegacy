@@ -24,7 +24,7 @@ CGFloat const FWTEllipseLayerAnimationDuration  = .25f;
 @property (nonatomic, assign) CGPoint ellipseCenter;
 @property (nonatomic, assign) CGRect availableRect;
 @property (nonatomic, assign) CGFloat radius;
-@property (nonatomic, readwrite) CGLayerRef backgroundCGLayer;
+@property (nonatomic, readwrite) CGLayerRef backgroundCGLayer;  
 @property (nonatomic, readwrite, retain) UIBezierPath *bezierPath;
 
 @end

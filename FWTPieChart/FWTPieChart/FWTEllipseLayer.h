@@ -8,10 +8,10 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-FOUNDATION_EXPORT UIEdgeInsets const FWTEllipseLayerEdgeInsets;     // {2.0f, 2.0f, 2.0f, 2.0f};
-FOUNDATION_EXPORT CGFloat const FWTEllipseLayerStartAngle;          //  3 * M_PI_2;
-FOUNDATION_EXPORT CGFloat const FWTEllipseLayerEndAngle;            //  3 * M_PI_2;
-FOUNDATION_EXPORT CGFloat const FWTEllipseLayerArcLength;           //  2 * M_PI;
+FOUNDATION_EXPORT UIEdgeInsets const FWTEllipseLayerEdgeInsets;     //  {2.0f, 2.0f, 2.0f, 2.0f}
+FOUNDATION_EXPORT CGFloat const FWTEllipseLayerStartAngle;          //  3 * M_PI_2
+FOUNDATION_EXPORT CGFloat const FWTEllipseLayerEndAngle;            //  3 * M_PI_2
+FOUNDATION_EXPORT CGFloat const FWTEllipseLayerArcLength;           //  2 * M_PI
 FOUNDATION_EXPORT CGFloat const FWTEllipseLayerAnimationDuration;   //  .25f
 
 FOUNDATION_EXPORT NSString *const FWTEllipseLayerStartAngleKey;
