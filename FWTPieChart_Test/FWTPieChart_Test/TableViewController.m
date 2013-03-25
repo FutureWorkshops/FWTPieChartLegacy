@@ -81,7 +81,7 @@ static char progressViewKey;
     
     self.invertedModeEnabled = NO;
     
-    self.title = @"Sample";
+    self.title = @"Table";
     
     self.tableView.backgroundColor = [UIColor colorWithWhite:.9f alpha:1.0f];
     self.tableView.separatorColor = [UIColor blackColor];
