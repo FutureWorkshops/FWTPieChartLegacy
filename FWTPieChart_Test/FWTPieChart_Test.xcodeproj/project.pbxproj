@@ -21,14 +21,12 @@
 		A923EDEE167A0EAD00709A25 /* Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDE5167A0EAD00709A25 /* Appearance.m */; };
 		A923EDEF167A0EAD00709A25 /* PieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDE7167A0EAD00709A25 /* PieChartViewController.m */; };
 		A923EDF0167A0EAD00709A25 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDE9167A0EAD00709A25 /* TableViewController.m */; };
-		A923EDF1167A0EAD00709A25 /* SamplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */; };
 		A923EDF2167A0EAD00709A25 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDED167A0EAD00709A25 /* SingleViewController.m */; };
-		A9B7092516B159D800BF147D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B7092416B159D800BF147D /* Utils.m */; };
 		A9D14A33170472AA00F64866 /* libRistrettoUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D14A32170472AA00F64866 /* libRistrettoUI.a */; };
 		A9D14A361704759300F64866 /* button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A341704759300F64866 /* button_back.png */; };
 		A9D14A371704759300F64866 /* button_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A351704759300F64866 /* button_back@2x.png */; };
-		A9D14A3A170475A800F64866 /* icon_piechart.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A38170475A800F64866 /* icon_piechart.png */; };
-		A9D14A3B170475A800F64866 /* icon_piechart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A39170475A800F64866 /* icon_piechart@2x.png */; };
+		A9D14A3A170475A800F64866 /* icon_project.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A38170475A800F64866 /* icon_project.png */; };
+		A9D14A3B170475A800F64866 /* icon_project@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A39170475A800F64866 /* icon_project@2x.png */; };
 		A9D14A511704876100F64866 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A501704876100F64866 /* icon.png */; };
 		A9D14A531704876600F64866 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A521704876600F64866 /* icon@2x.png */; };
 /* End PBXBuildFile section */
@@ -55,17 +53,13 @@
 		A923EDE7167A0EAD00709A25 /* PieChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartViewController.m; sourceTree = "<group>"; };
 		A923EDE8167A0EAD00709A25 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		A923EDE9167A0EAD00709A25 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		A923EDEA167A0EAD00709A25 /* SamplePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplePickerViewController.h; sourceTree = "<group>"; };
-		A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplePickerViewController.m; sourceTree = "<group>"; };
 		A923EDEC167A0EAD00709A25 /* SingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleViewController.h; sourceTree = "<group>"; };
 		A923EDED167A0EAD00709A25 /* SingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleViewController.m; sourceTree = "<group>"; };
-		A9B7092316B159D800BF147D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		A9B7092416B159D800BF147D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		A9D14A32170472AA00F64866 /* libRistrettoUI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRistrettoUI.a; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphoneos/libRistrettoUI.a"; sourceTree = "<group>"; };
 		A9D14A341704759300F64866 /* button_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_back.png; sourceTree = "<group>"; };
 		A9D14A351704759300F64866 /* button_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_back@2x.png"; sourceTree = "<group>"; };
-		A9D14A38170475A800F64866 /* icon_piechart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_piechart.png; sourceTree = "<group>"; };
-		A9D14A39170475A800F64866 /* icon_piechart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_piechart@2x.png"; sourceTree = "<group>"; };
+		A9D14A38170475A800F64866 /* icon_project.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_project.png; sourceTree = "<group>"; };
+		A9D14A39170475A800F64866 /* icon_project@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_project@2x.png"; sourceTree = "<group>"; };
 		A9D14A501704876100F64866 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		A9D14A521704876600F64866 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,7 +116,6 @@
 			children = (
 				A923EDBF167A0D0800709A25 /* AppDelegate.h */,
 				A923EDC0167A0D0800709A25 /* AppDelegate.m */,
-				A9B7097616B189D400BF147D /* Common */,
 				A923EDF3167A0EBB00709A25 /* ProgressView */,
 				A923EDF4167A0EEC00709A25 /* PieChartView */,
 				A923EDB7167A0D0800709A25 /* Supporting Files */,
@@ -142,8 +135,8 @@
 				A923EDC2167A0D0800709A25 /* Default.png */,
 				A923EDC4167A0D0800709A25 /* Default@2x.png */,
 				A923EDC6167A0D0800709A25 /* Default-568h@2x.png */,
-				A9D14A38170475A800F64866 /* icon_piechart.png */,
-				A9D14A39170475A800F64866 /* icon_piechart@2x.png */,
+				A9D14A38170475A800F64866 /* icon_project.png */,
+				A9D14A39170475A800F64866 /* icon_project@2x.png */,
 				A9D14A341704759300F64866 /* button_back.png */,
 				A9D14A351704759300F64866 /* button_back@2x.png */,
 			);
@@ -170,17 +163,6 @@
 				A923EDE7167A0EAD00709A25 /* PieChartViewController.m */,
 			);
 			name = PieChartView;
-			sourceTree = "<group>";
-		};
-		A9B7097616B189D400BF147D /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A923EDEA167A0EAD00709A25 /* SamplePickerViewController.h */,
-				A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */,
-				A9B7092316B159D800BF147D /* Utils.h */,
-				A9B7092416B159D800BF147D /* Utils.m */,
-			);
-			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,8 +222,8 @@
 				A923EDC7167A0D0800709A25 /* Default-568h@2x.png in Resources */,
 				A9D14A361704759300F64866 /* button_back.png in Resources */,
 				A9D14A371704759300F64866 /* button_back@2x.png in Resources */,
-				A9D14A3A170475A800F64866 /* icon_piechart.png in Resources */,
-				A9D14A3B170475A800F64866 /* icon_piechart@2x.png in Resources */,
+				A9D14A3A170475A800F64866 /* icon_project.png in Resources */,
+				A9D14A3B170475A800F64866 /* icon_project@2x.png in Resources */,
 				A9D14A511704876100F64866 /* icon.png in Resources */,
 				A9D14A531704876600F64866 /* icon@2x.png in Resources */,
 			);
@@ -259,9 +241,7 @@
 				A923EDEE167A0EAD00709A25 /* Appearance.m in Sources */,
 				A923EDEF167A0EAD00709A25 /* PieChartViewController.m in Sources */,
 				A923EDF0167A0EAD00709A25 /* TableViewController.m in Sources */,
-				A923EDF1167A0EAD00709A25 /* SamplePickerViewController.m in Sources */,
 				A923EDF2167A0EAD00709A25 /* SingleViewController.m in Sources */,
-				A9B7092516B159D800BF147D /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

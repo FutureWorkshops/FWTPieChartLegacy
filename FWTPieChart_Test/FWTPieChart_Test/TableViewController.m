@@ -81,11 +81,11 @@ static char progressViewKey;
     
     self.invertedModeEnabled = NO;
     
-    self.title = @"Table";
+//    self.title = @"Table";
     
     self.items = [[self class] sampleItems];
 //    self.tableView.backgroundColor = [UIColor colorWithWhite:.9f alpha:1.0f];
-//    self.tableView.separatorColor = [UIColor blackColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (void)viewWillAppear:(BOOL)animated

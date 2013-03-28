@@ -27,24 +27,15 @@
 {
     [super loadView];
     
-    self.title = @"Progress View";
+//    self.title = @"Progress View";
     
     //
-    CGFloat min = sideWidthBlock(self.view.frame, 20.0f);
+    CGFloat min = 300.0f;
     self.ellipseProgressView = [[[FWTEllipseProgressView alloc] init] autorelease];
     self.ellipseProgressView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin;
     self.ellipseProgressView.bounds = CGRectMake(0, 0, min, min);
     self.ellipseProgressView.center = self.view.center;
     [self.view addSubview:self.ellipseProgressView];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    CGFloat min = sideWidthBlock(self.view.frame, 20.0f);
-    if (min != CGRectGetWidth(self.ellipseProgressView.frame))
-        self.ellipseProgressView.bounds = CGRectMake(0, 0, min, min);
 }
 
 - (void)viewDidAppear:(BOOL)animated

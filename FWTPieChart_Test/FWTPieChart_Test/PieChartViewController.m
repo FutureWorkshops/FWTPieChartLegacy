@@ -30,7 +30,7 @@
     self.title = @"Pie Chart";
     
     //
-    CGFloat min = sideWidthBlock(self.view.frame, 20.0f);
+    CGFloat min = 300.0f;
     self.pieChart = [[[FWTPieChartView alloc] init] autorelease]; // 
     self.pieChart.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin;
     self.pieChart.bounds = CGRectMake(0, 0, min, min);
