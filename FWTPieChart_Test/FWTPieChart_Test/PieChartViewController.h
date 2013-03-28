@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Marco Meschini. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "RistrettoViewController.h"
 
-@interface PieChartViewController : UIViewController
+@interface PieChartViewController : RistrettoViewController
 
 @end

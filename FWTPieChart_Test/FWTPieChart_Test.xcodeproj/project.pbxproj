@@ -24,10 +24,17 @@
 		A923EDF1167A0EAD00709A25 /* SamplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDEB167A0EAD00709A25 /* SamplePickerViewController.m */; };
 		A923EDF2167A0EAD00709A25 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A923EDED167A0EAD00709A25 /* SingleViewController.m */; };
 		A9B7092516B159D800BF147D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B7092416B159D800BF147D /* Utils.m */; };
+		A9D14A33170472AA00F64866 /* libRistrettoUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D14A32170472AA00F64866 /* libRistrettoUI.a */; };
+		A9D14A361704759300F64866 /* button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A341704759300F64866 /* button_back.png */; };
+		A9D14A371704759300F64866 /* button_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A351704759300F64866 /* button_back@2x.png */; };
+		A9D14A3A170475A800F64866 /* icon_piechart.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A38170475A800F64866 /* icon_piechart.png */; };
+		A9D14A3B170475A800F64866 /* icon_piechart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A39170475A800F64866 /* icon_piechart@2x.png */; };
+		A9D14A511704876100F64866 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A501704876100F64866 /* icon.png */; };
+		A9D14A531704876600F64866 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D14A521704876600F64866 /* icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A923EDAC167A0D0800709A25 /* FWTPieChart_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FWTPieChart_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A923EDAC167A0D0800709A25 /* FWTPieChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FWTPieChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A923EDB0167A0D0800709A25 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A923EDB2167A0D0800709A25 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A923EDB4167A0D0800709A25 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -54,6 +61,13 @@
 		A923EDED167A0EAD00709A25 /* SingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleViewController.m; sourceTree = "<group>"; };
 		A9B7092316B159D800BF147D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		A9B7092416B159D800BF147D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		A9D14A32170472AA00F64866 /* libRistrettoUI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRistrettoUI.a; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphoneos/libRistrettoUI.a"; sourceTree = "<group>"; };
+		A9D14A341704759300F64866 /* button_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_back.png; sourceTree = "<group>"; };
+		A9D14A351704759300F64866 /* button_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_back@2x.png"; sourceTree = "<group>"; };
+		A9D14A38170475A800F64866 /* icon_piechart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_piechart.png; sourceTree = "<group>"; };
+		A9D14A39170475A800F64866 /* icon_piechart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_piechart@2x.png"; sourceTree = "<group>"; };
+		A9D14A501704876100F64866 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		A9D14A521704876600F64866 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D14A33170472AA00F64866 /* libRistrettoUI.a in Frameworks */,
 				A923EDE3167A0E3B00709A25 /* QuartzCore.framework in Frameworks */,
 				A923EDE1167A0E3100709A25 /* libFWTPieChart.a in Frameworks */,
 				A923EDB1167A0D0800709A25 /* UIKit.framework in Frameworks */,
@@ -84,7 +99,7 @@
 		A923EDAD167A0D0800709A25 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A923EDAC167A0D0800709A25 /* FWTPieChart_Test.app */,
+				A923EDAC167A0D0800709A25 /* FWTPieChart.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,6 +107,7 @@
 		A923EDAF167A0D0800709A25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9D14A32170472AA00F64866 /* libRistrettoUI.a */,
 				A923EDE0167A0E3100709A25 /* libFWTPieChart.a */,
 				A923EDE2167A0E3B00709A25 /* QuartzCore.framework */,
 				A923EDB0167A0D0800709A25 /* UIKit.framework */,
@@ -117,6 +133,8 @@
 		A923EDB7167A0D0800709A25 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A9D14A521704876600F64866 /* icon@2x.png */,
+				A9D14A501704876100F64866 /* icon.png */,
 				A923EDB8167A0D0800709A25 /* FWTPieChart_Test-Info.plist */,
 				A923EDB9167A0D0800709A25 /* InfoPlist.strings */,
 				A923EDBC167A0D0800709A25 /* main.m */,
@@ -124,6 +142,10 @@
 				A923EDC2167A0D0800709A25 /* Default.png */,
 				A923EDC4167A0D0800709A25 /* Default@2x.png */,
 				A923EDC6167A0D0800709A25 /* Default-568h@2x.png */,
+				A9D14A38170475A800F64866 /* icon_piechart.png */,
+				A9D14A39170475A800F64866 /* icon_piechart@2x.png */,
+				A9D14A341704759300F64866 /* button_back.png */,
+				A9D14A351704759300F64866 /* button_back@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -178,7 +200,7 @@
 			);
 			name = FWTPieChart_Test;
 			productName = FWTPieChart_Test;
-			productReference = A923EDAC167A0D0800709A25 /* FWTPieChart_Test.app */;
+			productReference = A923EDAC167A0D0800709A25 /* FWTPieChart.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -216,6 +238,12 @@
 				A923EDC3167A0D0800709A25 /* Default.png in Resources */,
 				A923EDC5167A0D0800709A25 /* Default@2x.png in Resources */,
 				A923EDC7167A0D0800709A25 /* Default-568h@2x.png in Resources */,
+				A9D14A361704759300F64866 /* button_back.png in Resources */,
+				A9D14A371704759300F64866 /* button_back@2x.png in Resources */,
+				A9D14A3A170475A800F64866 /* icon_piechart.png in Resources */,
+				A9D14A3B170475A800F64866 /* icon_piechart@2x.png in Resources */,
+				A9D14A511704876100F64866 /* icon.png in Resources */,
+				A9D14A531704876600F64866 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,9 +300,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../FWTPieChart/FWTPieChart/;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../FWTPieChart/FWTPieChart/\"",
+					"\"$(SRCROOT)/../RistrettoUI/RistrettoUI/\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -294,9 +326,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../FWTPieChart/FWTPieChart/;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../FWTPieChart/FWTPieChart/\"",
+					"\"$(SRCROOT)/../RistrettoUI/RistrettoUI/\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -312,8 +348,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FWTPieChart-adcqfnupsuedcjdozqcwudalsffq/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphoneos\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FWTPieChart;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -327,8 +364,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FWTPieChart-adcqfnupsuedcjdozqcwudalsffq/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphoneos\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FWTPieChart;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

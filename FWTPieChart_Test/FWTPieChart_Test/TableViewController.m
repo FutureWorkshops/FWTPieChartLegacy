@@ -83,8 +83,9 @@ static char progressViewKey;
     
     self.title = @"Table";
     
-    self.tableView.backgroundColor = [UIColor colorWithWhite:.9f alpha:1.0f];
-    self.tableView.separatorColor = [UIColor blackColor];
+    self.items = [[self class] sampleItems];
+//    self.tableView.backgroundColor = [UIColor colorWithWhite:.9f alpha:1.0f];
+//    self.tableView.separatorColor = [UIColor blackColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -125,15 +126,15 @@ static char progressViewKey;
 }
 
 #pragma mark - Getters
-- (NSArray *)items
++ (NSArray *)sampleItems
 {
-    if (!self->_items)
-    {
+//    if (!self->_items)
+//    {
         //  default
         FWTEllipseProgressView *base = [[[FWTEllipseProgressView alloc] init] autorelease];
         base.ellipseProgressLayer.startAngle = 3*M_PI_2 + 5.235987755983f;
         base.ellipseProgressLayer.endAngle = base.ellipseProgressLayer.startAngle;
-        base.progress = self.invertedModeEnabled ? 1.0f : .0f;
+//        base.progress = self.invertedModeEnabled ? 1.0f : .0f;
         objc_setAssociatedObject(base, &progressViewKey, @"- default\n- startAngle: 5.23r", OBJC_ASSOCIATION_RETAIN);
         
         //  STC
@@ -141,7 +142,7 @@ static char progressViewKey;
         stc.backgroundColor = [UIColor clearColor];
         stc.ellipseProgressLayer.drawPathBlock = [Appearance StyleSTCDashboardDrawPathBlock];
         stc.ellipseProgressLayer.drawBackgroundBlock = [Appearance StyleSTCDashboardBackgroundBlock];
-        stc.progress = self.invertedModeEnabled ? 1.0f : .0f;
+//        stc.progress = self.invertedModeEnabled ? 1.0f : .0f;
         objc_setAssociatedObject(stc, &progressViewKey, @"stc", OBJC_ASSOCIATION_RETAIN);
         
         //  The Open
@@ -150,7 +151,7 @@ static char progressViewKey;
         theOpen.ellipseProgressLayer.fillColor = [UIColor whiteColor].CGColor;
         theOpen.ellipseProgressLayer.drawPathBlock = [Appearance StyleTheOpenDrawPathBlock];
         theOpen.ellipseProgressLayer.drawBackgroundBlock = [Appearance StyleTheOpenBackgroundBlock];
-        theOpen.progress = self.invertedModeEnabled ? 1.0f : .0f;
+//        theOpen.progress = self.invertedModeEnabled ? 1.0f : .0f;
         objc_setAssociatedObject(theOpen, &progressViewKey, @"the open", OBJC_ASSOCIATION_RETAIN);
         
         //  from ten to two
@@ -160,20 +161,22 @@ static char progressViewKey;
         fromTenToTwo.ellipseProgressLayer.endAngle = base.ellipseProgressLayer.startAngle;
         fromTenToTwo.ellipseProgressLayer.arcLength = 2*M_PI/3;
         fromTenToTwo.ellipseProgressLayer.drawPathBlock = [Appearance StyleFromTenToTwoDrawPathBlock];
-        fromTenToTwo.progress = self.invertedModeEnabled ? 1.0f : .0f;
+//        fromTenToTwo.progress = self.invertedModeEnabled ? 1.0f : .0f;
         objc_setAssociatedObject(fromTenToTwo, &progressViewKey, @"- custom\n- startAngle: 5.23r\n- lenght: 2π/3", OBJC_ASSOCIATION_RETAIN);
-        
-        self->_items = [@[base, stc, theOpen, fromTenToTwo] retain];
-    }
+
+    return @[base, stc, theOpen, fromTenToTwo];
     
-    return self->_items;
+//        self->_items = [@[base, stc, theOpen, fromTenToTwo] retain];
+//    }
+//    
+//    return self->_items;
 }
 
 #pragma mark - TableView
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.items.count;
-}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return self.items.count;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
